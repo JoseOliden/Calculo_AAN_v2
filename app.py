@@ -12,6 +12,7 @@ import sympy as sp
 import matplotlib.pyplot as plt
 import tempfile
 import base64
+from def_functions import *
 
 # Establecer configuración de página
 st.set_page_config(
