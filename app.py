@@ -101,18 +101,22 @@ if page == "📁 Carga de Datos":
         if k0s_au_file:
             st.success(f"✅ {k0s_au_file.name} cargado")
     
-    # Base de datos de Nucléidos
-    st.subheader("🗃️ Base de datos de nucléidos")
-    db_file = st.file_uploader("Subir Base de Datos (.xlsx)", type=['xlsx'], key="database")
-    if db_file:
-        st.success(f"✅ Base de datos cargada")
-    
-    # Librería de Nucléidos
-    st.subheader("📚 Librería de Nucléidos")
-    ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"])
-    ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type[0]}.xlsx", type=['xlsx'], key="reference")
-    if ref_files:
-        st.success(f"✅ Archivo cargado")
+    col21, col22 = st.columns(2)
+
+    with col21:
+        # Base de datos de Nucléidos
+        st.subheader("🗃️ Base de datos de nucléidos")
+        db_file = st.file_uploader("Subir Base de Datos (.xlsx)", type=['xlsx'], key="database")
+        if db_file:
+            st.success(f"✅ Base de datos cargada")
+
+    with col22:
+        # Librería de Nucléidos
+        st.subheader("📚 Librería de Nucléidos")
+        ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"])
+        ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type[0]}.xlsx", type=['xlsx'], key="reference")
+        if ref_files:
+            st.success(f"✅ Archivo cargado")
 
 # ============================================
 # SECCIÓN 2: CONFIGURACIÓN
