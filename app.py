@@ -183,7 +183,7 @@ elif page == "⚙️ Configuración":
     with col_comp3:
         comp3 = st.selectbox("Comparador 3:", ["Au", "Co", "Mo"], index=2)
     
-    st.info("ℹ️ Los comparadores Au, Co y Mo se utilizarán para calcular el parámetro α")
+    st.info("ℹ️ Los comparadores Au, Co y Mo se utilizarán para calcular los parámetrosde f y α")
 
 # ============================================
 # SECCIÓN 3: PROCESAMIENTO
