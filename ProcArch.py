@@ -9,7 +9,6 @@ def limpiar(valor):
   valor = valor.rstrip()
   return valor
 
-rpt_file = files.upload()  # Subir archivo .RPT
 def procesar_RPT(rpt_file):
   # Usa : limpiar
   if rpt_file is not None:
