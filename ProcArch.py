@@ -12,14 +12,7 @@ import matplotlib.pyplot as plt
 import tempfile
 import base64
 # ------------------ RPT ---------------------------------
-#def limpiar(valor):
-#    if isinstance(valor, str):
-#        # 1. quitar solo un espacio inicial si existe
-#        if valor.startswith(" "):
-#            valor = valor[1:]
-#        # 2. quitar espacios al final completamente
-#        valor = valor.rstrip()
-#    return valor
+
 def limpiar(valor):
     if isinstance(valor, str):
         # elimina todos los espacios vacíos al inicio y al final
@@ -68,20 +61,15 @@ def procesar_RPT(rpt_file):
     df_tipo = df["linea"].str[:1].to_frame()
     df_tipo = df_tipo.applymap(limpiar)
     df_tipo.columns = ["Tipo"]
-    st.dataframe(df_tipo)
     
     # demas columnas
     df_demas = df["linea"].str[1:].to_frame()
     df_demas = df_demas.applymap(limpiar)
-    st.dataframe(df_demas)
-    #df_demas_tab = df_demas.split(r"\s+", expand=True)
     df_demas_tab = df_demas["linea"].str.split(r"\s+", n=9, expand=True)
-    st.dataframe(df_demas_tab)
     df_demas_tab.columns = ["Peak No.", "ROI Start", "ROI End", "Peak Centroid",
         "Energy (keV)", "Net Peak Area", "Net Peak Uncert",
         "Continuum Counts", "Tentative Nuclide"
     ]
-    st.dataframe(df_demas_tab)
     
     # 12. Unir df
     df_tab = pd.concat([df_tipo, df_demas_tab], axis=1)
