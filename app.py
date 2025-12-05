@@ -230,7 +230,7 @@ elif page == "📊 Procesamiento":
             st.session_state['resultados'] = df_ejemplo
             st.session_state['procesado'] = True
 
-            df_Au = Selecion_Nucleidos_Au(df_au_resultado,ref_files, df_file)
+            df_Au = Selecion_Nucleidos_Au(st.session_state.df_au_resultado,ref_files, df_file)
             st.dataframe(df_Au)
 
 # ============================================
