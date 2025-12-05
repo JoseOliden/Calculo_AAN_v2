@@ -73,7 +73,7 @@ def procesar_RPT(rpt_file):
     # 12. Unir df
     df_tab = pd.concat([df_tipo, df_demas_tab], axis=1)
     st.success("Archivo procesado correctamente 🚀")
-    
+    st.success("Actualizado")
     return df_tab
 
 # ------------------ kos ---------------------------------
