@@ -1,3 +1,17 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import os
+import re
+import io
+import json
+from datetime import datetime
+from scipy.optimize import root
+import sympy as sp
+import matplotlib.pyplot as plt
+import tempfile
+import base64
+
 def limpiar(valor):
     if isinstance(valor, str):
         # 1. quitar solo un espacio inicial si existe
