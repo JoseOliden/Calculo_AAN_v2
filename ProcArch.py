@@ -59,9 +59,11 @@ def procesar_RPT(rpt_file):
     df = df.applymap(limpiar)
 
     # 11. Separar columnas y asignar nombres
+    
     # primera columna
     df_tipo = df["linea"].str[:1]
     df_tipo.columns = ["Tipo"]
+    st.dataframe(df_tipo)
     # demas columnas
     df_demas = df["linea"].str[1:]
     df_demas_tab = df_demas.str.split(r"\s+", expand=True)
@@ -69,11 +71,11 @@ def procesar_RPT(rpt_file):
         "Energy (keV)", "Net Peak Area", "Net Peak Uncert",
         "Continuum Counts", "Tentative Nuclide"
     ]
+    st.dataframe(df_demas_tab)
     
     # 12. Unir df
     df_tab = pd.concat([df_tipo, df_demas_tab], axis=1)
     st.success("Archivo procesado correctamente 🚀")
-    st.success("Actualizado")
     return df_tab
 
 # ------------------ kos ---------------------------------
