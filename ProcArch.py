@@ -64,6 +64,21 @@ def procesar_RPT(rpt_file):
     st.success("Archivo procesado correctamente 🚀")
     return df_tab
 
+def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database)
+    df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
+    return 0
+def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database)
+    # buscar en database energía de Au
+    En_Au = 411.8 
+    tol_Au = 1
+    df_energy_Au = df_database[(df_database["NUCLID"] == "AU-198") & ((df_database["EGKEV"] > En_Au + tol_au) | (df_database["EGKEV"] < En_Au - tol_au))]
+    st.dataframe(df_energy_Au)
+    #df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
+    return 0   
+def Selecion_Nucleidos(df_rpt_Au,df_Nucleidos, df_databas)
+    df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
+    return 0   
+
 # ------------------ kos ---------------------------------
 
 def extraer_DATE_MEA_MEAS_TIM(k0s_file):
