@@ -74,11 +74,11 @@ def procesar_RPT(rpt_file):
 
 # ------------------ kos ---------------------------------
 
-def extraer_DATE_MEA_MEAS_TIM(rpt_file):
-    if rpt_file is None:
+def extraer_DATE_MEA_MEAS_TIM(k0s_file):
+    if k0s_file is None:
         return None
 
-    contenido = rpt_file.getvalue().decode("utf-8", errors="ignore")
+    contenido = k0s_file.getvalue().decode("utf-8", errors="ignore")
     lineas = contenido.splitlines()
 
     fecha = hora = tiempo_real = tiempo_vivo = None
