@@ -191,9 +191,6 @@ elif page == "📊 Procesamiento":
             # Simulación de progreso
             progress_bar = st.progress(0)
             status_text = st.empty()
-
-            df_Au = Selecion_Nucleidos_Au(df_au_resultado,ref_files, df_file)
-            st.dataframe(df_Au)
             
             steps = [
                 "Leyendo archivo .k0s de muestra...",
@@ -231,6 +228,9 @@ elif page == "📊 Procesamiento":
             # Guardar sesión
             st.session_state['resultados'] = df_ejemplo
             st.session_state['procesado'] = True
+
+            df_Au = Selecion_Nucleidos_Au(df_au_resultado,ref_files, df_file)
+            st.dataframe(df_Au)
 
 # ============================================
 # SECCIÓN 4: RESULTADOS
