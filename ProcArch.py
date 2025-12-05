@@ -12,15 +12,19 @@ import matplotlib.pyplot as plt
 import tempfile
 import base64
 # ------------------ RPT ---------------------------------
+#def limpiar(valor):
+#    if isinstance(valor, str):
+#        # 1. quitar solo un espacio inicial si existe
+#        if valor.startswith(" "):
+#            valor = valor[1:]
+#        # 2. quitar espacios al final completamente
+#        valor = valor.rstrip()
+#    return valor
 def limpiar(valor):
     if isinstance(valor, str):
-        # 1. quitar solo un espacio inicial si existe
-        if valor.startswith(" "):
-            valor = valor[1:]
-        # 2. quitar espacios al final completamente
-        valor = valor.rstrip()
+        # elimina todos los espacios vacíos al inicio y al final
+        valor = valor.strip()
     return valor
-
 
 def procesar_RPT(rpt_file):
     if rpt_file is None:
