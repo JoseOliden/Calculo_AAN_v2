@@ -92,7 +92,7 @@ if page == "📁 Carga de Datos":
         if k0s_file:
             st.success(f"✅ {k0s_file.name} cargado")
             if k0s_file:
-                fecha, hora, t_real, t_vivo = extraer_DATE_MEAS_TIM(k0s_file)
+                fecha, hora, t_real, t_vivo = extraer_DATE_MEA_MEAS_TIM(k0s_file)
                 st.subheader("📌 Datos extraídos del archivo")
                 st.write(f"**Fecha de medición:** {fecha}")
                 st.write(f"**Hora de medición:** {hora}")
