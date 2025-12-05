@@ -101,5 +101,5 @@ def extraer_DATE_MEA_MEAS_TIM(k0s_file):
                 if len(datos) >= 2:
                     tiempo_vivo = datos[0]
                     tiempo_real = datos[1]
-
+                    st.write("Actualiza")
     return fecha, hora, tiempo_vivo, tiempo_real
