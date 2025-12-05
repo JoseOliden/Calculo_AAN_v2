@@ -92,7 +92,8 @@ if page == "📁 Carga de Datos":
             if rpt_au_file:
                 df_au_resultado = procesar_RPT(rpt_au_file)
                 st.dataframe(df_au_resultado)
-
+                st.session_state.df_au_resultado = df_au_resultado
+    
     with col4:
         st.subheader("📄 Archivo .k0s de Au (Comparador)")
         k0s_au_file = st.file_uploader("Subir archivo .k0s de Au", type=['k0s', 'K0S'], key="k0s_au")
