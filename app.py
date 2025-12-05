@@ -116,6 +116,7 @@ if page == "📁 Carga de Datos":
             st.success(f"✅ Base de datos cargada")
             df_file = pd.read_excel(db_file)
             st.dataframe(df_file)
+            st.session_state.df_file = df_file
 
     with col22:
         # Librería de Nucléidos
@@ -126,6 +127,7 @@ if page == "📁 Carga de Datos":
             st.success(f"✅ Archivo cargado")
             ref_files = pd.read_excel(ref_files)
             st.dataframe(ref_files)
+            st.session_state.ref_files = ref_files
 
 # ============================================
 # SECCIÓN 2: CONFIGURACIÓN
