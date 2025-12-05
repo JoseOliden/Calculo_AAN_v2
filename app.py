@@ -114,11 +114,11 @@ if page == "📁 Carga de Datos":
         if k0s_au_file:
             st.success(f"✅ {k0s_au_file.name} cargado")
             fecha_au, hora_au, t_real_au, t_vivo_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
-                st.subheader("📌 Datos extraídos del archivo")
-                st.write(f"**Fecha de medición:** {fecha_au}")
-                st.write(f"**Hora de medición:** {hora_au}")
-                st.write(f"**Tiempo real (s):** {t_real_au}")
-                st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
+            st.subheader("📌 Datos extraídos del archivo")
+            st.write(f"**Fecha de medición:** {fecha_au}")
+            st.write(f"**Hora de medición:** {hora_au}")
+            st.write(f"**Tiempo real (s):** {t_real_au}")
+            st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
     
     col21, col22 = st.columns(2)
 
