@@ -63,8 +63,8 @@ def procesar_RPT(rpt_file):
     df_tipo = df["linea"].str[:1]
     df_tipo.columns = ["Tipo"]
     # demas columnas
-    df_demas["sin_primero"] = df["linea"].str[1:]
-    df_demas_tab = df_demas["linea"].str.split(r"\s+", expand=True)
+    df_demas = df["linea"].str[1:]
+    df_demas_tab = df_demas.str.split(r"\s+", expand=True)
     df_demas_tab.columns = ["Peak No.", "ROI Start", "ROI End", "Peak Centroid",
         "Energy (keV)", "Net Peak Area", "Net Peak Uncert",
         "Continuum Counts", "Tentative Nuclide"
