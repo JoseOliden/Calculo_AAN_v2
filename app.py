@@ -1,5 +1,5 @@
 # app.py
-
+librerias
 from ProcArch import *
 from calAAN import *
 
