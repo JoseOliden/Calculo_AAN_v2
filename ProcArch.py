@@ -113,7 +113,7 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos):
     
     if not filas_filtradas:
         return pd.DataFrame()
-    
+    st.dataframe(Nucleidos)
     # Combinar todos los resultados
     df_filtrado = pd.concat(filas_filtradas, ignore_index=True)
     df_filtrado = df_filtrado.join(Nucleidos)
