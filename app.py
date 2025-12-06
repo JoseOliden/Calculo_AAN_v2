@@ -78,6 +78,11 @@ if page == "📁 Carga de Datos":
             st.success(f"✅ {k0s_file.name} cargado")
             if k0s_file:
                 fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
+                st.session_state.fecha = fecha
+                st.session_state.hora = hora
+                st.session_state.t_vivo = t_vivo
+                st.session_state.t_real = t_real
+                
                 st.subheader("📌 Datos extraídos del archivo")
                 st.write(f"**Fecha de medición:** {fecha}")
                 st.write(f"**Hora de medición:** {hora}")
@@ -91,8 +96,8 @@ if page == "📁 Carga de Datos":
             st.success(f"✅ {rpt_au_file.name} cargado")
             if rpt_au_file:
                 df_au_resultado = procesar_RPT(rpt_au_file)
-                st.dataframe(df_au_resultado)
                 st.session_state.df_au_resultado = df_au_resultado
+                st.dataframe(df_au_resultado)
     
     with col4:
         st.subheader("📄 Archivo .k0s de Au (Comparador)")
@@ -100,6 +105,11 @@ if page == "📁 Carga de Datos":
         if k0s_au_file:
             st.success(f"✅ {k0s_au_file.name} cargado")
             fecha_au, hora_au, t_vivo_au, t_real_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
+            st.session_state.fecha_au = fecha_au
+            st.session_state.hora_au = hora_au
+            st.session_state.t_vivo_au = t_vivo_au
+            st.session_state.t_real_au = t_real_au
+            
             st.subheader("📌 Datos extraídos del archivo")
             st.write(f"**Fecha de medición:** {fecha_au}")
             st.write(f"**Hora de medición:** {hora_au}")
@@ -140,33 +150,47 @@ elif page == "⚙️ Configuración":
     with col1:
         st.subheader("⚖️ Parámetros de Masa")
         masa_muestra = st.number_input("Masa de la muestra (g):", min_value=0.0, value=0.2817, step=0.0001, format="%.4f")
-        masa_comparador = st.number_input("Masa del comparador Au (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
+        st.session_state.masa_muestra = masa_muestra
+        masa_comparador_au = st.number_input("Masa del comparador Au (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
+        st.session_state.ref_files = masa_comparador_au
         
         st.subheader("📐 Geometría")
         geometria = st.radio("Geometría de detección:", ["50 mm", "185 mm"])
         geometria_val = "50" if geometria == "50 mm" else "185"
+        st.session_state.geometria = geometria
         
         st.subheader("⏰ Tolerancia de Energía")
         tolerancia = st.slider("Tolerancia de energía (keV):", min_value=0.1, max_value=5.0, value=1.5, step=0.1)
+        st.session_state.tolerancia = tolerancia    
     
     with col2:
         st.subheader("🕐 Tiempos de Irradiación")
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             fecha_ini = st.date_input("Fecha inicio irradiación:", value=datetime(2025, 9, 26))
+            st.session_state.fecha_ini = fecha_ini
         with col_hora1:
             hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time())
+            st.session_state.hora_ini = hora_ini
         
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
             fecha_fin = st.date_input("Fecha fin irradiación:", value=datetime(2025, 9, 26))
+            st.session_state.fecha_fin = fecha_fin
         with col_hora2:
             hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time())
+            st.session_state.hora_fin = hora_fin
         
         st.subheader("📊 Parámetros de Incertidumbre")
-        u_k0 = st.number_input("Incertidumbre k0 (%):", min_value=0.0, max_value=10.0, value=2.8, step=0.1)
-        u_e = st.number_input("Incertidumbre eficiencia (%):", min_value=0.0, max_value=10.0, value=3.0, step=0.1)
-        u_w = st.number_input("Incertidumbre masa (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.01)
+        u_k0 = st.number_input("Incertidumbre k0 de la muestra (%):", min_value=0.0, max_value=10.0, value=2.8, step=0.1)
+        st.session_state.u_k0 = u_k0
+        u_e = st.number_input("Incertidumbre eficiencia de la muestra (%):", min_value=0.0, max_value=10.0, value=3.0, step=0.1)
+        st.session_state.u_e = u_e
+        u_w = st.number_input("Incertidumbre masa de la muestra (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.01)
+        st.session_state.u_w = u_w
+        u_w_Au = st.number_input("Incertidumbre masa del comparador de Au (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.01)
+        st.session_state.u_w = u_w_Au
+
     
     # Comparadores para cálculo de alfa
     st.subheader("🔬 Comparadores para Cálculo de f y α")
