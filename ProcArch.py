@@ -79,9 +79,16 @@ def procesar_RPT(rpt_file):
 
 def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database):
     df_rpt_muestras["Energy"] = pd.to_numeric(df_rpt_muestras["Energy"], errors="coerce")
+    df_Nucleidos["Energy"] = pd.to_numeric(df_Nucleidos["Energy"], errors="coerce")
+    tol = 1.5 
+    elementos_validos = df_Nuclidos["Elemento"].unique()
 
-    #df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
-    return 0
+    df_filtrado = df_rpt_muestras[
+        (df_rpt_muestras["Elemento"].isin(elementos_validos)) &
+        (df_rpt_muestras["Energy"] >= df_Nuclidos["Energy_min"] - tol) &
+        (df_rpt_muestras["Energy"] <= df_Nuclidos["Energy_max"] + tol)
+        ]
+    return df_filtrado
 def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
     # buscar en database energía de Au
     En_Au = float(411.8) 
