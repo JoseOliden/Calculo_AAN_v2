@@ -78,7 +78,9 @@ def procesar_RPT(rpt_file):
     return df_tab
 
 def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database):
-    df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
+    df_rpt_muestras["Energy"] = pd.to_numeric(df_rpt_muestras["Energy"], errors="coerce")
+
+    #df_filtrado = df[(df[""] == "P") & ((df["Energía"] > 100) | (df["Energía"] < 20))]
     return 0
 def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
     # buscar en database energía de Au
