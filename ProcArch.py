@@ -109,7 +109,8 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos):
         #    muestras_en_rango['E_max_rango'] = e_max
             
             filas_filtradas.append(muestras_en_rango)
-            Nucleidos['Identidad_Verificada_Energia'] = nucleido
+            Nucleidos['Identidad_Verificada_Energia'] = pd.concat([Nucleidos['Identidad_Verificada_Energia'], nucleido], ignore_index=True)
+            #Nucleidos['Identidad_Verificada_Energia'] = nucleido
     
     if not filas_filtradas:
         return pd.DataFrame()
