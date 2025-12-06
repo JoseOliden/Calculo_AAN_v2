@@ -77,16 +77,16 @@ def procesar_RPT(rpt_file):
     st.success("Archivo procesado correctamente 🚀")
     return df_tab
 
-def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database):
-    df_rpt_muestras["Energy"] = pd.to_numeric(df_rpt_muestras["Energy"], errors="coerce")
+def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos):
+    df_rpt_muestras["Energy (keV)"] = pd.to_numeric(df_rpt_muestras["Energy (keV)"], errors="coerce")
     df_Nucleidos["Energy"] = pd.to_numeric(df_Nucleidos["Energy"], errors="coerce")
     tol = 1.5 
     elementos_validos = df_Nuclidos["Elemento"].unique()
 
     df_filtrado = df_rpt_muestras[
-        (df_rpt_muestras["Elemento"].isin(elementos_validos)) &
-        (df_rpt_muestras["Energy"] >= df_Nuclidos["Energy_min"] - tol) &
-        (df_rpt_muestras["Energy"] <= df_Nuclidos["Energy_max"] + tol)
+        (df_rpt_muestras["Tentative Nuclide"].isin(elementos_validos)) &
+        (df_rpt_muestras["Energy (kev)"] >= df_Nuclidos["E (keV)"] - tol) &
+        (df_rpt_muestras["Energy (keV)"] <= df_Nuclidos["E (keV)"] + tol)
         ]
     return df_filtrado
 def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
