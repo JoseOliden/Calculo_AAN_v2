@@ -113,6 +113,7 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos):
             #Nucleidos['Identidad_Verificada_Energia'] = nucleido
             lista_nucleidos = Nucleidos['Identidad_Verificada_Energia'].tolist()
             lista_nucleidos.append(nucleido)
+            Nucleidos = pd.DataFrame() 
             Nucleidos['Identidad_Verificada_Energia'] = lista_nucleidos
     
     if not filas_filtradas:
