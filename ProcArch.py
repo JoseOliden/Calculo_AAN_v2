@@ -86,7 +86,7 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos):
 
     df_filtrado = df_rpt_muestras[
         (df_rpt_muestras["Tentative Nuclide"].isin(elementos_validos)) &
-        (df_rpt_muestras["Energy (kev)"] >= df_Nucleidos["E (keV)"] - tol) &
+        (df_rpt_muestras["Energy (keV)"] >= df_Nucleidos["E (keV)"] - tol) &
         (df_rpt_muestras["Energy (keV)"] <= df_Nucleidos["E (keV)"] + tol)
         ]
     st.dataframe(df_filtrado)
