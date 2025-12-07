@@ -125,7 +125,7 @@ def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
     df_energy_Au = df_rpt_Au[(df_rpt_Au["Tentative Nuclide"] == "AU-198") & ((df_rpt_Au["Energy (keV)"] > En_Au - tol_Au) | (df_rpt_Au["Energy (keV)"] < En_Au + tol_Au))]
     return df_energy_Au 
 
-def Extra_from_database(df, df_database,tol):
+def Extra_from_database(df, df_database,tol=1.5):
     df["Energy (keV)"] = pd.to_numeric(df["Energy (keV)"], errors="coerce")
     df_database["EGKEV"] = pd.to_numeric(df_database["EGKEV"], errors="coerce")
     elementos_validos = df["Identidad_Verificada_Energia"].unique()
@@ -137,7 +137,7 @@ def Extra_from_database(df, df_database,tol):
     df_database.reset_index(drop=True, inplace=True)
     df_filtrado1.reset_index(drop=True, inplace=True)
    
-    filas_filtradas = []
+    """filas_filtradas = []
     Nucleidos = pd.DataFrame(columns=['Identidad_Verificada_Energia'])  
     
     for _, rango in df_Nucleidos.iterrows():
@@ -162,10 +162,10 @@ def Extra_from_database(df, df_database,tol):
         return pd.DataFrame()
     # Combinar todos los resultados
     df_filtrado = pd.concat(filas_filtradas, ignore_index=True)
-    df_filtrado = df_filtrado.join(Nucleidos)
+    df_filtrado = df_filtrado.join(Nucleidos)"""
     
     
-    return df_salida   
+    return df  
 
 # ------------------ kos ---------------------------------
 
