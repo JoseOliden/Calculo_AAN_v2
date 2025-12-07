@@ -169,7 +169,9 @@ elif page == "⚙️ Configuración":
         st.subheader("🕐 Tiempos de Irradiación")
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
-            fecha_ini = st.date_input("Fecha inicio irradiación (yyyy,mm,dd):", value=datetime(2025, 9, 26))
+            #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
+            fecha_ini= st.text_input("Fecha inicio irradiación (MM/DD/AAAA):", value="09/26/2025")
+
             st.session_state.fecha_ini = fecha_ini
         with col_hora1:
             #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
@@ -178,7 +180,9 @@ elif page == "⚙️ Configuración":
         
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
-            fecha_fin = st.date_input("Fecha fin irradiación ((yyyy,mm,dd):", value=datetime(2025, 9, 26))
+            #fecha_fin = st.date_input("Fecha fin irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
+            fecha_fin= st.text_input("Fecha fin irradiación (MM/DD/AAAA):", value="09/26/2025")
+
             st.session_state.fecha_fin = fecha_fin
         with col_hora2:
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
