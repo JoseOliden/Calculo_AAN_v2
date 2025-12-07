@@ -167,7 +167,7 @@ def Extra_from_database(df, df_database,tol=1.5):
     df_filtrado = df_filtrado.join(Nucleidos)"""
     
     
-    return df  
+    return df_prop_nucleidos  
 
 # ------------------ kos ---------------------------------
 
