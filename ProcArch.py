@@ -120,7 +120,7 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos,tol=1.5):
     
     return df_unido
 
-def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
+def Selecion_Nucleidos_Au(df_rpt_Au, df_database,tol):
     # buscar en database energía de Au
     En_Au = float(411.8) 
     tol_Au = float(1.0)
