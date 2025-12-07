@@ -140,7 +140,7 @@ def Extra_from_database(df, df_database,tol=1.5):
    
     #filas_filtradas = []
     #Nucleidos = pd.DataFrame(columns=['Identidad_Verificada_Energia'])  
-    df_prop_nucleidos=pd.Dataframe()
+    df_prop_nucleidos=pd.DataFrame()
     for _, rango in df.iterrows():
         e_min = rango['Energy (keV)'] - tol
         e_max = rango['Energy (keV)'] + tol
