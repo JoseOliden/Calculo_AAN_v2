@@ -171,7 +171,7 @@ elif page == "⚙️ Configuración":
             fecha_ini = st.date_input("Fecha inicio irradiación (yyyy,mm,dd):", value=datetime(2025, 9, 26))
             st.session_state.fecha_ini = fecha_ini
         with col_hora1:
-            hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time())
+            hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
             st.session_state.hora_ini = hora_ini
         
         col_fecha2, col_hora2 = st.columns(2)
@@ -179,7 +179,7 @@ elif page == "⚙️ Configuración":
             fecha_fin = st.date_input("Fecha fin irradiación ((yyyy,mm,dd):", value=datetime(2025, 9, 26))
             st.session_state.fecha_fin = fecha_fin
         with col_hora2:
-            hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time())
+            hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
             st.session_state.hora_fin = hora_fin
         
         st.subheader("📊 Parámetros de Incertidumbre")
