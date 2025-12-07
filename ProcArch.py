@@ -128,28 +128,29 @@ def Selecion_Nucleidos_Au(df_rpt_Au,df_Nucleidos, df_database):
 def Extra_from_database(df, df_database,tol=1.5):
     df["Energy (keV)"] = pd.to_numeric(df["Energy (keV)"], errors="coerce")
     df_database["EGKEV"] = pd.to_numeric(df_database["EGKEV"], errors="coerce")
-    elementos_validos = df["Identidad_Verificada_Energia"].unique()
-    df_filtrado1 = df_database[
-        (df_database["NUCLID"].isin(elementos_validos)) 
-       ]
-    st.dataframe(df_filtrado1)
+    #elementos_validos = df["Identidad_Verificada_Energia"].unique()
+    #df_filtrado1 = df_database[
+    #    (df_database["NUCLID"].isin(elementos_validos)) 
+    #   ]
+    #st.dataframe(df_filtrado1)
     df.reset_index(drop=True, inplace=True)
     df_database.reset_index(drop=True, inplace=True)
-    df_filtrado1.reset_index(drop=True, inplace=True)
+    df_basebase_o = df_database
+    #df_filtrado1.reset_index(drop=True, inplace=True)
    
-    """filas_filtradas = []
-    Nucleidos = pd.DataFrame(columns=['Identidad_Verificada_Energia'])  
+    #filas_filtradas = []
+    #Nucleidos = pd.DataFrame(columns=['Identidad_Verificada_Energia'])  
     
-    for _, rango in df_Nucleidos.iterrows():
-        e_min = rango['E (keV)'] - tol
-        e_max = rango['E (keV)'] + tol
-        nucleido = rango['Elemento']
+    for _, rango in df.iterrows():
+        e_min = rango['EGKEV'] - tol
+        e_max = rango['EGKEV'] + tol
+        nucleido = rango['NUCLID']
         
         # Filtrar muestras en este rango
-        mascara = (df_filtrado1['Energy (keV)'] >= e_min) & (df_filtrado1['Energy (keV)'] <= e_max)
-        muestras_en_rango = df_filtrado1[mascara].copy()
-        
-        if not muestras_en_rango.empty:    
+        mascara = (df_database_o['NUCLID'] == nucleido & df_database_o['EGKEV'] >= e_min) & (df_database_o['EGKEV'] <= e_max)
+        muestras_en_rango = df_database_o[mascara].copy()
+        st.dataframe(muestras_en_rango)
+        """if not muestras_en_rango.empty:    
             filas_filtradas.append(muestras_en_rango)
             #Nucleidos = pd.concat([Nucleidos, nucleido], pd.Series(nucleido) ignore_index=True)
             #Nucleidos['Identidad_Verificada_Energia'] = nucleido
