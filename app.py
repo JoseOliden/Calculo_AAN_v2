@@ -264,6 +264,7 @@ elif page == "📊 Procesamiento":
             st.dataframe(df_filtrado_Nuclidos)
 
             df_filtrado_Nuclidos_prop = Extra_from_database(df_filtrado_Nuclidos, st.session_state.df_file,st.session_state.tolerancia)
+            st.dataframe(df_filtrado_Nuclidos_prop)
 # ============================================
 # SECCIÓN 4: RESULTADOS
 # ============================================
