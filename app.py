@@ -294,7 +294,8 @@ elif page == "📊 Procesamiento":
             st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
 
             # Cálculo de f y alfa
-            
+            alfa = cal_alfa(st.session_state.df_comparadores_alfa_f)
+            st.write(f"**alfa:** {alfa}")
 
 # ============================================
 # SECCIÓN 4: RESULTADOS
