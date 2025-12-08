@@ -56,6 +56,7 @@ def cal_alfa(df_comp):
   k0_c = df_comp["k0"].to_numpy()
   st.write(k0_c)
   e_c = df_comp["efe"].to_numpy()
+  Q0_c = df_comp["Q0"].to_numpy()
   Cn_c = df_comp["Cn"].to_numpy()
   w_c = df_comp["w"].to_numpy()
   lam_c = df_comp["lambda"].to_numpy()
