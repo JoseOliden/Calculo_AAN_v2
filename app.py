@@ -202,15 +202,9 @@ elif page == "⚙️ Configuración":
     
     # Comparadores para cálculo de alfa
     st.subheader("🔬 Comparadores para Cálculo de f y α")
-    col_comp1, col_comp2, col_comp3 = st.columns(3)
-    with col_comp1:
-        comp1 = st.selectbox("Comparador 1:", ["Au", "Co", "Mo"], index=0)
-    with col_comp2:
-        comp2 = st.selectbox("Comparador 2:", ["Au", "Co", "Mo"], index=1)
-    with col_comp3:
-        comp3 = st.selectbox("Comparador 3:", ["Au", "Co", "Mo"], index=2)
-    
+    df_comparadores_alfa_f = crear_df_compardores()    
     st.info("ℹ️ Los comparadores Au, Co y Mo se utilizarán para calcular los parámetros f y α")
+    st.dataframe(df_comparadores_alfa_f)
 
 # ============================================
 # SECCIÓN 3: PROCESAMIENTO
