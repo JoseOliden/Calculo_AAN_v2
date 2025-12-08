@@ -278,8 +278,22 @@ elif page == "📊 Procesamiento":
             #Tiempos de irradiación y decaimiento del comparador Au 
             # Se el comparador fue irradiado en un tiempo diferente el cálculo
             # Irraciación: (fecha_fin, hora_fin) - (fecha_ini, hora_ini)
-            # Decaimiento: (fecha_ini, hora_ini) -  (fecha_au, hora_au) 
-            (f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_med_c_Au, hora_med_c_Au) 
+            # Decaimiento: (fecha_ini, hora_ini) -  (fecha_au, hora_au)
+            f_ini = st.session_state.fecha_ini
+            h_ini = st.session_state.hora_ini
+            f_fin = st.session_state.fecha_fin
+            h_fin = st.session_state.hora_fin
+            f_med = st.session_state.fecha
+            hora_med = st.session_state.hora
+            f_med_c_Au = st.session_state.fecha_au 
+            hora_med_c_Au = st.session_state.hora_au
+            t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_med_c_Au, hora_med_c_Au)
+            st.write(f"**Tiempo irr (s):** {t_irr}")
+            st.write(f"**Tiempo dec (s):** {t_dec}")
+            st.write(f"**Tiempo irr del comparador Au (s):** {t_irr_Au}")
+            st.write(f"**Tiempo dec del comparador Au (s):** {t_dec_Au}")
+
+
 # ============================================
 # SECCIÓN 4: RESULTADOS
 # ============================================
