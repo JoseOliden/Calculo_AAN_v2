@@ -21,18 +21,9 @@ import base64
 def Aesp(Cn_i, w_i,lam,tr,td,ti,tv,e):
   # Calcula la actividad específica
   C_i = lam/(1-np.exp(-lam*tr))
-  st.write("C_i")
-  st.write(C_i)
   D_i = np.exp(lam*td)
-  st.write("D_i")
-  st.write(D_i)
   H_i = tr/tv
-  st.write("H_i")
-  st.write(H_i)
   S_i = 1-np.exp(-lam*ti)
-  st.write("S_i")
-  st.write(S_i)
-  #jojo
   return Cn_i*D_i*C_i*H_i/(S_i*w_i) # se agregó e
 
 # ---------------------------- Calculo de alfa --------------------------------#
@@ -115,9 +106,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   Q0_c_Au = df_comp_Au["Q0"].to_numpy(dtype="float64")
   Cn_c_Au = df_comp_Au["Net Peak Area"].to_numpy(dtype="float64")
   w_c_Au = w_Au
-  # jojo
-  lam_c_Au = np.float64(0.0000029768) 
-  #lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy(dtype="float64")
+  lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy(dtype="float64")
   Er_c_Au = df_comp_Au["EREF"].to_numpy(dtype="float64")
 
   Aesp_c_Au = Aesp(np.float64(Cn_c_Au[0]), w_c_Au, np.float64(lam_c_Au), tr_c_Au, td_c_Au, ti_c_Au, tv_c_Au, np.float64(e_c_Au[0]))
@@ -147,7 +136,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   for i in range(len(k0_i)):
     # Calcula la concentración del elemento i en la muestra
     C[i] = (Aesp_i[i]/Aesp_c_Au)*(k0_c_Au/k0_i[i])*(e_c_Au/e_i[i])*((f + Q0_alfa_c_Au)/(f + Q0_alfa_i[i]))
-  return C, Q0_alfa_i, Q0_alfa_c_Au, Aesp_i, Aesp_c_Au,lam_c_Au,Cn_c_Au
+  return C, Cn_crr
 
 # ------------------------ Calculo de Incertidumbre ---------------------------#
 
