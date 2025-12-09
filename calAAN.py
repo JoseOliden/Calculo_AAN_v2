@@ -115,10 +115,10 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   # muestra
   #k0_i, e_i, Q0_i, Cn_i, w_i, lamb_i, Er_i, td_i, tr_i, ti_i, tv_i = par_ele
   k0_i = df_muestra["K0"].to_numpy()
-  if geometria == 50:
+  if geometria == "50 mm":
     e_i = df_muestra["EFIGAMMA50"].to_numpy()*df_muestra["COI ROSSBACH"].to_numpy()
     #e_i = df_muestra["efe"].to_numpy()
-  if geometria == 185:
+  if geometria == "185 mm":
     e_i = df_muestra["EFIGAMMA185"].to_numpy()*df_muestra["COI GAMMA185"].to_numpy()
   Q0_i = df_muestra["Q0"].to_numpy()
   Cn_i = df_muestra["Net Peak Area"].to_numpy()
