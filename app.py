@@ -240,27 +240,19 @@ elif page == "📊 Procesamiento":
                 status_text.text(f"📋 {step}")
             
             # Datos de ejemplo
-            datos_ejemplo = {
-                'Nucleido': ['CE-141', 'SE-75', 'HG-203', 'PA-233', 'CR-51'],
-                'Energía (keV)': [145.44, 264.70, 279.19, 312.01, 320.08],
-                'Área Neto': [81892, 803, 1844, 79166, 41293],
-                'Concentración (ppm)': [26.0, 0.49, 0.30, 4.6, 27.0],
-                'Incertidumbre (ppm)': [1.09, 0.08, 0.03, 0.20, 1.15],
-                '% Incertidumbre': [4.19, 16.63, 9.22, 4.30, 4.25]
-            }
+            #datos_ejemplo = {
+            #    'Nucleido': ['CE-141', 'SE-75', 'HG-203', 'PA-233', 'CR-51'],
+            #    'Energía (keV)': [145.44, 264.70, 279.19, 312.01, 320.08],
+            #    'Área Neto': [81892, 803, 1844, 79166, 41293],
+            #    'Concentración (ppm)': [26.0, 0.49, 0.30, 4.6, 27.0],
+            #    'Incertidumbre (ppm)': [1.09, 0.08, 0.03, 0.20, 1.15],
+            #    '% Incertidumbre': [4.19, 16.63, 9.22, 4.30, 4.25]
+            #}
             
-            df_ejemplo = pd.DataFrame(datos_ejemplo)
             
-            st.success("✅ Procesamiento completado!")
-            status_text.text("✅ Procesamiento finalizado")
             
-            # Mostrar resultados
-            st.subheader("📋 Resultados del Procesamiento")
-            st.dataframe(df_ejemplo, use_container_width=True)
             
-            # Guardar sesión
-            st.session_state['resultados'] = df_ejemplo
-            st.session_state['procesado'] = True
+           
 
             # Procesa comparador de Au y sus datos
             df_Au = Selecion_Nucleidos_Au(st.session_state.df_au_resultado, st.session_state.df_file,st.session_state.tolerancia)
@@ -321,8 +313,40 @@ elif page == "📊 Procesamiento":
             df_muestra["Net Peak Area Corr"] = Cn_corr_i
             df_muestra["Concentracion (PPM)"] = C*1000000
             st.dataframe(df_muestra)
-        
-           
+            
+            
+             # Datos de ejemplo
+            #datos_ejemplo = {
+            #    'Nucleido': ['CE-141', 'SE-75', 'HG-203', 'PA-233', 'CR-51'],
+            #    'Energía (keV)': [145.44, 264.70, 279.19, 312.01, 320.08],
+            #    'Área Neto': [81892, 803, 1844, 79166, 41293],
+            #    'Concentración (ppm)': [26.0, 0.49, 0.30, 4.6, 27.0],
+            #    'Incertidumbre (ppm)': [1.09, 0.08, 0.03, 0.20, 1.15],
+            #    '% Incertidumbre': [4.19, 16.63, 9.22, 4.30, 4.25]
+            #}
+            
+            
+            df_ejemplo = pd.DataFrame()
+            df_ejemplo["Nucleido"] =  df_muestra["NUCLID"]
+            df_ejemplo["Energía (keV)"] = df_muestra["EGKEV"]
+            df_ejemplo["Área Neto"] = df_muestra["Net Peak Area"]
+            df_ejemplo["Concentración (ppm)"] = df_muestra["Concentracion (PPM"]
+            df_ejemplo["Incertidumbre (ppm)"] = df_muestra["Net Peak Area"]
+            df_ejemplo["% Incertidumbre"] = df_muestra["Net Peak Area"]
+
+
+            st.success("✅ Procesamiento completado!")
+            status_text.text("✅ Procesamiento finalizado")
+            
+            # Mostrar resultados
+            st.subheader("📋 Resultados del Procesamiento")
+            st.dataframe(df_ejemplo, use_container_width=True)
+            
+            # Guardar sesión
+            st.session_state['resultados'] = df_ejemplo
+            st.session_state['procesado'] = True
+
+
 # ============================================
 # SECCIÓN 4: RESULTADOS
 # ============================================
