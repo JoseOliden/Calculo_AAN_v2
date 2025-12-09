@@ -78,8 +78,8 @@ def procesar_RPT(rpt_file):
     return df_tab
 
 def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database, tol=1.5):
-    df_rpt_muestras["Energy (keV)"] = pd.to_numeric(df_rpt_muestras["Energy (keV)"], errors="coerce")
-    df_Nucleidos["E (keV)"] = pd.to_numeric(df_Nucleidos["E (keV)"], errors="coerce")
+    df_rpt_muestras["Energy (keV)"] = pd.to_numeric(df_rpt_muestras["Energy (keV)"], errors="coerce").astype("float64")
+    df_Nucleidos["E (keV)"] = pd.to_numeric(df_Nucleidos["E (keV)"], errors="coerce").astype("float64")
     elementos_validos = df_Nucleidos["Elemento"].unique()
     df_filtrado1 = df_rpt_muestras[
         (df_rpt_muestras["Tentative Nuclide"].isin(elementos_validos)) 
@@ -122,9 +122,9 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database, tol=1.
 
 def Selecion_Nucleidos_Au(df_rpt_Au, df_database,tol):
     # buscar en database energía de Au
-    En_Au = float(411.8) 
-    tol_Au = float(1.0)
-    df_rpt_Au["Energy (keV)"] = pd.to_numeric(df_rpt_Au["Energy (keV)"], errors="coerce")
+    En_Au = np.float64(411.8) 
+    tol_Au = np.float64(1.0)
+    df_rpt_Au["Energy (keV)"] = pd.to_numeric(df_rpt_Au["Energy (keV)"], errors="coerce").astype("float64")
     df_energy_Au = df_rpt_Au[(df_rpt_Au["Tentative Nuclide"] == "AU-198") & ((df_rpt_Au["Energy (keV)"] > En_Au - tol_Au) | (df_rpt_Au["Energy (keV)"] < En_Au + tol_Au))]
 
     # agregar propiedades
@@ -133,8 +133,8 @@ def Selecion_Nucleidos_Au(df_rpt_Au, df_database,tol):
     return df_unido
 
 def Extra_from_database(df, df_database,tol=1.5):
-    df["Energy (keV)"] = pd.to_numeric(df["Energy (keV)"], errors="coerce")
-    df_database["EGKEV"] = pd.to_numeric(df_database["EGKEV"], errors="coerce")
+    df["Energy (keV)"] = pd.to_numeric(df["Energy (keV)"], errors="coerce").astype("float64")
+    df_database["EGKEV"] = pd.to_numeric(df_database["EGKEV"], errors="coerce").astype("float64")
     
     df.reset_index(drop=True, inplace=True)
     df_database.reset_index(drop=True, inplace=True)
