@@ -402,7 +402,7 @@ def corr_Cn(i, df_muestra):
 
     if (Interf == "N_A"):
       return Area
-    df_filtrado = df_muestra[(df_final["Identidad_Verificada_Energia"] == Interf) & (df_muestra["EGKEV"].between(E_Interf - delta, E_Interf + delta))]
+    df_filtrado = df_muestra[(df_muestra["Identidad_Verificada_Energia"] == Interf) & (df_muestra["EGKEV"].between(E_Interf - delta, E_Interf + delta))]
     st.success(df_filtrado)
     if df_filtrado.empty:
       st.success("No se encontró inteferente ")
