@@ -324,7 +324,7 @@ elif page == "📊 Procesamiento":
             st.write(Aesp_i)
             st.write(Aesp_c_Au)
             st.write(lam_c_Au[0])
-            st.write(Cn_c_Au)}
+            st.write(Cn_c_Au)
             # jojo
 # ============================================
 # SECCIÓN 4: RESULTADOS
