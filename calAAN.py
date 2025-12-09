@@ -392,7 +392,7 @@ def corr_Cn(i, df_final):
     Area = df_unico["Net Peak Area"]
     Interf = df_unico["INTERF"]
     E_Interf = df_unico["E_INTERF"]
-    FC = df_unico["FC_GAMM"]
+    FC = df_unico["FC_GAMM"].to_numpy(dtype="float64")
     st.write(Interf)
     st.write(E_Interf)
 
@@ -404,7 +404,8 @@ def corr_Cn(i, df_final):
       st.success("No se encontró inteferente ")
       return Area
     st.write(df_filtrado.iloc[0]["Net Peak Area"])
-    Area = Area - df_filtrado.iloc[0]["Net Peak Area"]*FC
+    E_in_conf = df_filtrado.iloc[0]["Net Peak Area"].to_numpy(dtype="float64")
+    Area = Area - E_in_conf*FC
 
     return Area
 
