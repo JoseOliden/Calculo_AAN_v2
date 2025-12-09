@@ -391,7 +391,7 @@ def corr_Cn(i, df_muestra):
     df_muestra["FC_GAMM"] = pd.to_numeric(df_muestra["FC_GAMM"], errors="coerce")
     
     delta = 1.0
-    df_unico = df_final.iloc[i]
+    df_unico = df_muestra.iloc[i]
     Nucl = df_unico["Identidad_Verificada_Energia"]
     Area = df_unico["Net Peak Area"]
     Interf = df_unico["INTERF"]
@@ -402,7 +402,7 @@ def corr_Cn(i, df_muestra):
 
     if (Interf == "N_A"):
       return Area
-    df_filtrado = df_final[(df_final["Identidad_Verificada_Energia"] == Interf) & (df_final["EGKEV"].between(E_Interf - delta, E_Interf + delta))]
+    df_filtrado = df_muestra[(df_final["Identidad_Verificada_Energia"] == Interf) & (df_muestra["EGKEV"].between(E_Interf - delta, E_Interf + delta))]
     st.success(df_filtrado)
     if df_filtrado.empty:
       st.success("No se encontró inteferente ")
