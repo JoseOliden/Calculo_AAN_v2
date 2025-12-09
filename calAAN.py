@@ -128,8 +128,11 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
 
   Aesp_i = np.zeros(len(k0_i))
   Q0_alfa_i = np.zeros(len(k0_i))
+  Cn_corr_i = np.zeros(len(k0_i))
   for i in range(len(k0_i)):
-    Aesp_i[i] = Aesp(np.float64(Cn_i[i]), w_i, np.float64(lam_i[i]), tr_i, td_i, ti_i, tv_i, np.float64(e_i[i]))
+    Cn_corr_i[i] = corr_Cn(i, df_muestra)
+    Aesp_i[i] = Aesp(np.float64(Cn_corr_i[i]), w_i, np.float64(lam_i[i]), tr_i, td_i, ti_i, tv_i, np.float64(e_i[i]))
+    #Aesp_i[i] = Aesp(np.float64(Cn_i[i]), w_i, np.float64(lam_i[i]), tr_i, td_i, ti_i, tv_i, np.float64(e_i[i]))
     Q0_alfa_i[i] = cal_Q0_alfa_i(Q0_i[i],Er_i[i],alfa)
 
   C = np.zeros(len(k0_i))
