@@ -106,7 +106,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   Q0_c_Au = df_comp_Au["Q0"].to_numpy()
   Cn_c_Au = df_comp_Au["Net Peak Area"].to_numpy()
   w_c_Au = w_Au
-  lam_c_Au = log(2)/df_comp_Au["t(1/2) s"].to_numpy()
+  lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy()
   Er_c_Au = df_comp_Au["EREF"].to_numpy()
 
   Aesp_c_Au = Aesp(Cn_c_Au, w_c_Au, lam_c_Au, tr_c_Au, td_c_Au, ti_c_Au, tv_c_Au, e_c_Au)
@@ -123,7 +123,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   Q0_i = df_muestra["Q0"].to_numpy()
   Cn_i = df_muestra["Net Peak Area"].to_numpy()
   w_i = w
-  lam_i = log(2)/df_muestra["t(1/2) s"].to_numpy()
+  lam_i = np.log(2)/df_muestra["t(1/2) s"].to_numpy()
   Er_i = df_muestra["EREF"].to_numpy()
 
   Aesp_i = np.zeros(len(k0_i))
