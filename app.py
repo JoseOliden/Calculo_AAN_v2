@@ -314,18 +314,6 @@ elif page == "📊 Procesamiento":
             df_muestra["Concentracion (PPM)"] = C*1000000
             st.dataframe(df_muestra)
             
-            
-             # Datos de ejemplo
-            #datos_ejemplo = {
-            #    'Nucleido': ['CE-141', 'SE-75', 'HG-203', 'PA-233', 'CR-51'],
-            #    'Energía (keV)': [145.44, 264.70, 279.19, 312.01, 320.08],
-            #    'Área Neto': [81892, 803, 1844, 79166, 41293],
-            #    'Concentración (ppm)': [26.0, 0.49, 0.30, 4.6, 27.0],
-            #    'Incertidumbre (ppm)': [1.09, 0.08, 0.03, 0.20, 1.15],
-            #    '% Incertidumbre': [4.19, 16.63, 9.22, 4.30, 4.25]
-            #}
-            
-            
             df_ejemplo = pd.DataFrame()
             df_ejemplo["Nucleido"] =  df_muestra["NUCLID"]
             df_ejemplo["Energía (keV)"] = df_muestra["EGKEV"]
