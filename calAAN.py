@@ -20,10 +20,11 @@ import base64
 
 def Aesp(Cn_i, w_i,lam,tr,td,ti,tv,e):
   # Calcula la actividad específica
-  C_i = np.float64(lam/(1-np.exp(-lam*tr)))
-  D_i = np.float64(np.exp(lam*td))
-  H_i = np.float64(tr/tv)
-  S_i = np.float64(1-np.exp(-lam*ti))
+  C_i = lam/(1-np.exp(-lam*tr))
+  D_i = np.exp(lam*td)
+  H_i = tr/tv
+  S_i = 1-np.exp(-lam*ti)
+  #jojo
   return Cn_i*D_i*C_i*H_i/(S_i*w_i) # se agregó e
 
 # ---------------------------- Calculo de alfa --------------------------------#
