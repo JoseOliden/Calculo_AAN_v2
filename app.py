@@ -299,6 +299,24 @@ elif page == "📊 Procesamiento":
             st.write(f"**alfa:** {alfa}")
             st.write(f"**f:** {f}")
 
+
+            # Calculo de la concentración
+            df_muestra = df_filtrado_Nuclidos 
+            w = st.session_state.masa_muestra
+            td_i = t_dec
+            ti_i = t_irr
+            tv_i = st.session_state.t_vivo
+            tr_i = st.session_state.t_real
+            df_comp_Au = df_Au
+            w_Au = (st.session_state.masa_comparador_au)/1000000
+            td_c_Au = t_dec
+            ti_c_Au = t_irr
+            tv_c_Au = st.session_state.t_vivo_au
+            tr_c_Au = st.session_state.t_real_au
+            geom = st.session_state.geometria
+            
+            C = conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geom)
+            st.write(C)
 # ============================================
 # SECCIÓN 4: RESULTADOS
 # ============================================
