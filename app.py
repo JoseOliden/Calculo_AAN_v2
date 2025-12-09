@@ -327,15 +327,14 @@ elif page == "📊 Procesamiento":
             st.write(lam_c_Au)
             st.write(Cn_c_Au)
             # jojo
-            st.write("NumPy:", np.__version__)
-            
-            info = np.finfo(np.float64)
-            st.write("Machine parameters float64:")
-            st.write("eps (ε):", info.eps)  # precisión
-            st.write("tiny (min positivo normalizado):", info.tiny)
-            st.write("max (máximo representable):", info.max)
-            st.write("min (mínimo representable negativo):", info.min)
-            st.write("resolution:", info.resolution)
+            #st.write("NumPy:", np.__version__)
+            #info = np.finfo(np.float64)
+            #st.write("Machine parameters float64:")
+            #st.write("eps (ε):", info.eps)  # precisión
+            #st.write("tiny (min positivo normalizado):", info.tiny)
+            #st.write("max (máximo representable):", info.max)
+            #st.write("min (mínimo representable negativo):", info.min)
+            #st.write("resolution:", info.resolution)
 # ============================================
 # SECCIÓN 4: RESULTADOS
 # ============================================
