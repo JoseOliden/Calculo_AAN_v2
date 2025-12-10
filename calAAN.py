@@ -194,7 +194,7 @@ def parametros_cal_U(u_e,u_k0,u_w,u_Cn,u_w_c_Au ):
   u_tv_c_Au = 0.0   # Tiempo de vivo
     
 
-(Cn_i, Cn_1, Cn_2, Cn_c_Au, Er_i, Er_1, Er_2, Er_c_Au, Q0_i, Q0_1, Q0_2,
+  (Cn_i, Cn_1, Cn_2, Cn_c_Au, Er_i, Er_1, Er_2, Er_c_Au, Q0_i, Q0_1, Q0_2,
    Q0_c_Au, alfa, e_i, e_1, e_2, e_c_Au, k0_i, k0_1, k0_2, k0_c_Au, lamb_i,
    lamb_1, lamb_2, lamb_c_Au, td_i, td_1, td_2, td_c_Au, ti_i, ti_1, ti_2,
    ti_c_Au, tr_i, tr_1, tr_2, tr_c_Au, tv_i, tv_1, tv_2, tv_c_Au, w_i, w_1,
