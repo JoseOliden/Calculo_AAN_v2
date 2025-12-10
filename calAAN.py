@@ -142,11 +142,11 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   return C, Cn_corr_i
 
 # ------------------------ Calculo de Incertidumbre ---------------------------#
-def parametros_cal_U():
+def parametros_cal_U(u_e,u_k0,u_w,u_Cn,u_w_c_Au ):
   # -------------------- Incertidumbre de muestra -------------------------------#
-  u_e = 3 # se ingresa
-  u_k0 = 2.8 # se ingresa 
-  u_w = 0.01 # se ingresa
+  #u_e = 3 # se ingresa
+  #u_k0 = 2.8 # se ingresa 
+  #u_w = 0.01 # se ingresa
   #u_Cn = 1 # se calcula para cada elemento. de los Cn/u_Cn_v
   u_Er = 0
   u_Q0 = 0
@@ -215,7 +215,7 @@ def parametros_cal_U():
              tv_c_Au*u_tv_c_Au/100, w_i*u_w/100, w_1*u_w_1/100, w_2*u_w_2/100,
              w_c_Au*u_w_c_Au/100)
 
-
+  return 0
 
 
 
