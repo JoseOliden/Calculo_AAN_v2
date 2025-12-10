@@ -298,7 +298,7 @@ elif page == "📊 Procesamiento":
             tv_i = st.session_state.t_vivo
             tr_i = st.session_state.t_real
             df_comp_Au = df_Au.copy()
-            w_Au = (st.session_state.masa_comparador_au)
+            w_Au = st.session_state.masa_comparador_au
             #jojo
             td_c_Au = t_dec_Au 
             ti_c_Au = t_irr
