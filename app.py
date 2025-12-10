@@ -321,7 +321,8 @@ elif page == "📊 Procesamiento":
 
             Inc_valor = np.zeros(len(df_muestra))
             Inc_por = np.zeros(len(df_muestra))
-            for i in range(len(df_muestra)): 
+            for i in range(len(df_muestra)):
+                st.write(i)
                 Val_ini,u_v_ini = parametros_cal_U(i,df_muestra,u_e,u_k0,u_w,td_i,ti_i,tr_i,tv_i,w,  df_comp, df_comp_Au,u_w_c_Au,td_c_Au,ti_c_Au,tr_c_Au,tv_c_Au,w_Au, geom,alfa )
                 u_y, y_val, u_y_por = cal_U(Val_ini,u_v_ini)
                 Inc_valor[i] = 1000000*u_y
