@@ -142,7 +142,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   return C, Cn_corr_i
 
 # ------------------------ Calculo de Incertidumbre ---------------------------#
-def parametros_cal_U(df_unico, df_comp, df_comp_Au, u_e,u_k0,u_w,u_w_c_Au,w_geom ):
+def parametros_cal_U(df_unico, df_comp, df_comp_Au, u_e,u_k0,u_w,u_w_c_Au,w_i,geom. ):
   # i es indice el nucleido.
   # ------------------------------------------------------------------------
   alfa = 0.226
@@ -210,9 +210,21 @@ def parametros_cal_U(df_unico, df_comp, df_comp_Au, u_e,u_k0,u_w,u_w_c_Au,w_geom
   w_3 = w_c[2]
  
   # ----------------------- valores del comparador de Au ---------------------------#
+  Cn_c_Au = df_comp_Au["Net Peak Area Corr"] 
+  Er_c_Au = df_comp_Au["EREF"] 
+  Q0_c_Au = df_comp_Au["Q0"] 
+  if (geom == "50 mm"):
+    e_c_Au = df_comp_Au["EFIGAMMA50"]*df_unico["COI ROSSBACH"] 
+  if (geom == "185 mm"):
+    e_c_Au = df_comp_Au["EFIGAMMA185"]*df_unico["COI GAMMA185"]
+  k0_c_Au = df_comp_Au["K0"]
+  lamb_c_Au = np.log(2)/df_comp_Au["t(1/2) s"]
+  td_c_Au = 0
+  ti_c_Au = 0
+  tr_c_Au = 0
+  tv_c_Au = 0
+  w_c_Au = 0
 
-
-  
   # -------------------- Incertidumbre de muestra -------------------------------#
   #u_e = 3 # se ingresa
   #u_k0 = 2.8 # se ingresa 
@@ -255,7 +267,7 @@ def parametros_cal_U(df_unico, df_comp, df_comp_Au, u_e,u_k0,u_w,u_w_c_Au,w_geom
   u_k0_c_Au = 0.0     #
   u_e_c_Au = 0.0    #
   u_Q0_c_Au = 0    #
-  u_Cn_c_Au = 100*u_Cn_c_Au_input/Cn_c_Au_input     # Area del fotopico extraer de archivos PLA, RPT
+  u_Cn_c_Au = 100*u_Cn_c_Au/Cn_c_Au     # Area del fotopico extraer de archivos PLA, RPT
   u_w_c_Au = 1 # se ingresa
   u_lamb_c_Au = 0.0   #
   u_Er_c_Au = 0.0   #
