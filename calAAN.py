@@ -95,7 +95,6 @@ def cal_Q0_alfa_i(Q0,Er,alfa):
 def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geometria):
   #alfa = 0.226 # Forzar valor de alfa 
   #f = 34       # Forzar valor de f
-  st.dataframe(df_comp_Au)
   # Comparador Au
   #k0_c_Au, e_c_Au, Q0_c_Au, Cn_c_Au, w_c_Au, lam_c_Au, Er_c_Au, td_c_Au, tr_c_Au, ti_c_Au, tv_c_Au =  par_comp_Au
   k0_c_Au = df_comp_Au["K0"].to_numpy(dtype="float64")
@@ -145,7 +144,6 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
 def parametros_cal_U(i,df_muestra,u_e,u_k0,u_w,td_i,ti_i,tr_i,tv_i,w_i,  df_comp, df_comp_Au,u_w_c_Au,td_c_Au,ti_c_Au,tr_c_Au,tv_c_Au,w_c_Au, geom,alfa ):
   # i es indice el nucleido.
   df_unico = df_muestra.iloc[[i]]
-  st.dataframe(df_unico)
   # ------------------------------------------------------------------------
   #alfa = 0.226
   u_alfa = 0
