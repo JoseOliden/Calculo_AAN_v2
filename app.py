@@ -176,7 +176,7 @@ elif page == "⚙️ Configuración":
         with col_hora1:
             #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
             hora_ini = st.text_input("Hora inicio irradiación (HH:MM:SS):", value="08:45:00")
-            st.session_state.["hora_ini"] = hora_ini
+            st.session_state["hora_ini"] = hora_ini
         
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
@@ -187,17 +187,17 @@ elif page == "⚙️ Configuración":
         with col_hora2:
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
             hora_fin= st.text_input("Hora fin irradiación (HH:MM:SS):", value="09:45:00")
-            st.session_state.["hora_fin"] = hora_fin
+            st.session_state["hora_fin"] = hora_fin
         
         st.subheader("📊 Parámetros de Incertidumbre")
         u_k0 = st.number_input("Incertidumbre k0 de la muestra (%):", min_value=0.0, max_value=10.0, value=2.8, step=0.1)
-        st.session_state.["u_k0"] = np.float64(u_k0)
+        st.session_state["u_k0"] = np.float64(u_k0)
         u_e = st.number_input("Incertidumbre eficiencia de la muestra (%):", min_value=0.0, max_value=10.0, value=3.0, step=0.1)
-        st.session_state.["u_e"] = np.float64(u_e)
+        st.session_state["u_e"] = np.float64(u_e)
         u_w = st.number_input("Incertidumbre masa de la muestra (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.01)
-        st.session_state.["u_w"] = np.float64(u_w)
+        st.session_state["u_w"] = np.float64(u_w)
         u_w_Au = st.number_input("Incertidumbre masa del comparador de Au (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.01)
-        st.session_state.["u_w_Au"] = np.float64(u_w_Au)
+        st.session_state["u_w_Au"] = np.float64(u_w_Au)
 
         
     # Comparadores para cálculo de alfa
@@ -205,9 +205,9 @@ elif page == "⚙️ Configuración":
     st.info("ℹ️ Los comparadores Au, Co y Mo se utilizarán para calcular los parámetros f y α")
     df_comparadores_alfa_f = crear_df_comparadores()
     if "df_comparadores_alfa_f" not in st.session_state:
-        st.session_state.["df_comparadores_alfa_f"] = crear_df_comparadores()
+        st.session_state["df_comparadores_alfa_f"] = crear_df_comparadores()
     else:
-        st.session_state.["df_comparadores_alfa_f"]
+        st.session_state["df_comparadores_alfa_f"]
         st.dataframe(df_comparadores_alfa_f)
     
 # ============================================
@@ -250,12 +250,12 @@ elif page == "📊 Procesamiento":
             #}
 
             # Procesa comparador de Au y sus datos
-            df_Au = Selecion_Nucleidos_Au(st.session_state.["df_au_resultado"], st.session_state.["df_file"],st.session_state.["tolerancia"])
+            df_Au = Selecion_Nucleidos_Au(st.session_state["df_au_resultado"], st.session_state["df_file"],st.session_state["tolerancia"])
             st.success("Compardor de Au")
             st.dataframe(df_Au)
             # Hallar los nucleidos y sus datos
             st.success("Nucleidos encontrados en la muestra")
-            df_filtrado_Nuclidos = Selecion_Nucleidos_muestra(st.session_state.["df_resultado"],st.session_state.["ref_files"], st.session_state.["df_file"], st.session_state.["tolerancia"])
+            df_filtrado_Nuclidos = Selecion_Nucleidos_muestra(st.session_state["df_resultado"],st.session_state["ref_files"], st.session_state["df_file"], st.session_state["tolerancia"])
             st.dataframe(df_filtrado_Nuclidos)
 
             #Tiempos de irradiación y decaimiento de la muestra
@@ -266,14 +266,14 @@ elif page == "📊 Procesamiento":
             # Se el comparador fue irradiado en un tiempo diferente el cálculo
             # Irraciación: (fecha_fin, hora_fin) - (fecha_ini, hora_ini)
             # Decaimiento: (fecha_ini, hora_ini) -  (fecha_au, hora_au)
-            f_ini = st.session_state.["fecha_ini"]
-            h_ini = st.session_state.["hora_ini"]
-            f_fin = st.session_state.["fecha_fin"]
-            h_fin = st.session_state.["hora_fin"]
-            f_med = st.session_state.["fecha"]
-            hora_med = st.session_state.["hora"]
-            f_med_c_Au = st.session_state.["fecha_au"] 
-            hora_med_c_Au = st.session_state.["hora_au"]
+            f_ini = st.session_state["fecha_ini"]
+            h_ini = st.session_state["hora_ini"]
+            f_fin = st.session_state["fecha_fin"]
+            h_fin = st.session_state["hora_fin"]
+            f_med = st.session_state["fecha"]
+            hora_med = st.session_state["hora"]
+            f_med_c_Au = st.session_state["fecha_au"] 
+            hora_med_c_Au = st.session_state["hora_au"]
             t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_med_c_Au, hora_med_c_Au)
             st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr}")
             st.write(f"**Tiempo decaimiento de la muestra (s):** {t_dec}")
@@ -281,8 +281,8 @@ elif page == "📊 Procesamiento":
             st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
 
             # Cálculo de f y alfa
-            st.dataframe(st.session_state.["df_comparadores_alfa_f"])
-            alfa, f = cal_alfa(st.session_state.["df_comparadores_alfa_f"])
+            st.dataframe(st.session_state["df_comparadores_alfa_f"])
+            alfa, f = cal_alfa(st.session_state["df_comparadores_alfa_f"])
             st.write(f"**alfa:** {alfa}")
             st.write(f"**f:** {f}")
 
@@ -292,19 +292,19 @@ elif page == "📊 Procesamiento":
             
             # Calculo de la concentración
             df_muestra = df_filtrado_Nuclidos.copy() 
-            w = st.session_state.["masa_muestra"]
+            w = st.session_state["masa_muestra"]
             td_i = t_dec
             ti_i = t_irr
-            tv_i = st.session_state.["t_vivo"]
-            tr_i = st.session_state.["t_real"]
+            tv_i = st.session_state["t_vivo"]
+            tr_i = st.session_state["t_real"]
             df_comp_Au = df_Au.copy()
-            w_Au = st.session_state.["masa_comparador_au"]
+            w_Au = st.session_state["masa_comparador_au"]
             #jojo
             td_c_Au = t_dec_Au 
             ti_c_Au = t_irr
-            tv_c_Au = st.session_state.["t_vivo_au"]
-            tr_c_Au = st.session_state.["t_real_au"]
-            geom = st.session_state.["geometria"]
+            tv_c_Au = st.session_state["t_vivo_au"]
+            tr_c_Au = st.session_state["t_real_au"]
+            geom = st.session_state["geometria"]
             
             C, Cn_corr_i = conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geom)
             df_muestra["Net Peak Area Corr"] = Cn_corr_i
@@ -312,11 +312,11 @@ elif page == "📊 Procesamiento":
             st.dataframe(df_muestra)
 
             # calculo de incertidumbre
-            u_e = st.session_state.["u_e"]
-            u_k0 = st.session_state.["u_k0"]
-            u_w = st.session_state.["u_w"]
-            u_w_c_Au = st.session_state.["u_w_Au"]
-            df_comp = st.session_state.["df_comparadores_alfa_f"]
+            u_e = st.session_state["u_e"]
+            u_k0 = st.session_state["u_k0"]
+            u_w = st.session_state["u_w"]
+            u_w_c_Au = st.session_state["u_w_Au"]
+            df_comp = st.session_state["df_comparadores_alfa_f"]
             st.dataframe(df_comp)
 
             Inc_valor = np.zeros(len(df_muestra))
