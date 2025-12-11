@@ -321,21 +321,24 @@ elif page == "📊 Procesamiento":
 
             Inc_valor = np.zeros(len(df_muestra))
             Inc_por = np.zeros(len(df_muestra))
+            Inc_valor_red = np.zeros(len(df_muestra))
+            C_red = np.zeros(len(df_muestra))
             for i in range(len(df_muestra)):
                 st.write(i)
                 Val_ini,u_v_ini = parametros_cal_U(i,df_muestra,u_e,u_k0,u_w,td_i,ti_i,tr_i,tv_i,w,  df_comp, df_comp_Au,u_w_c_Au,td_c_Au,ti_c_Au,tr_c_Au,tv_c_Au,w_Au, geom,alfa )
                 u_y, y_val, u_y_por, simbolos = cal_U(Val_ini,u_v_ini)
-                st.text("simbolos")
-                st.write(simbolos)
                 Inc_valor[i] = 1000000*u_y
                 Inc_por[i] = u_y_por
+                x_red, u_red = redondear_con_incert(1000000*C[i], 1000000*u_y, sig_inc = 3):
+                C_red[i] = x_red
+                Inc_valor_red[i] = u_y_por
                 
             df_ejemplo = pd.DataFrame()
             df_ejemplo["Nucleido"] =  df_muestra["NUCLID"]
             df_ejemplo["Energía (keV)"] = df_muestra["EGKEV"]
             df_ejemplo["Área Neto"] = df_muestra["Net Peak Area"]
-            df_ejemplo["Concentración (ppm)"] = df_muestra["Concentracion (PPM)"]
-            df_ejemplo["Incertidumbre (ppm)"] = Inc_valor
+            df_ejemplo["Concentración (ppm)"] = C_red
+            df_ejemplo["Incertidumbre (ppm)"] = Inc_valor_red
             df_ejemplo["% Incertidumbre"] = Inc_por
 
 
