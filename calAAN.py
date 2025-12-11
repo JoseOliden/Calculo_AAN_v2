@@ -176,37 +176,26 @@ def parametros_cal_U(i,df_muestra,u_e,u_k0,u_w,td_i,ti_i,tr_i,tv_i,w_i,  df_comp
   
   Cn_1 = Cn_c[0]
   Cn_2 = Cn_c[1]
-  Cn_3 = Cn_c[2]
   Er_1 = Er_c[0]
   Er_2 = Er_c[1]
-  Er_3 = Er_c[2]
   Q0_1 = Q0_c[0]
   Q0_2 = Q0_c[1]
-  Q0_3 = Q0_c[2]
   e_1 = e_c[0]
   e_2 = e_c[1]
-  e_3 = e_c[2]
   k0_1 = k0_c[0]
   k0_2 = k0_c[1]
-  k0_3 = k0_c[2]
   lamb_1 = lamb_c[0]
   lamb_2 = lamb_c[1]
-  lamb_2 = lamb_c[2]
   td_1 = td_c[0]
   td_2 = td_c[1]
-  td_3 = td_c[2]
   ti_1 = ti_c[0]
   ti_2 = ti_c[1]
-  ti_3 = ti_c[2]
   tr_1 = tr_c[0]
   tr_2 = tr_c[1]
-  tr_3 = tr_c[2]
   tv_1 = tv_c[0]
   tv_2 = tv_c[1]
-  tv_3 = tv_c[2]
   w_1 = w_c[0]
   w_2 = w_c[1]
-  w_3 = w_c[2]
  
   # ----------------------- valores del comparador de Au ---------------------------#
   Cn_c_Au = np.float64(df_comp_Au["Net Peak Area"]) 
@@ -398,7 +387,7 @@ def cal_U(Val_ini,u_v_ini):
         c["% Contribución"] = 100 * c["Contribución a u(y)²"] / u_y_squared if u_y_squared > 0 else np.nan
   except Exception as e:
       st.error(f"Ocurrió un error en el cálculo: {e}")
-  return u_y, y_val, u_y_por, Aesp
+  return u_y, y_val, u_y_por, variables
 
 def cal_U_Aesp(Val_ini,u_v_ini):
   # [Cn, lamb, t_d, ti, tr, tv, w]
