@@ -230,7 +230,10 @@ elif page == "⚙️ Configuración":
         u_k0 = 2.8
         u_e = 3.0
         st.write(f"**Incertidumbre k0 de la muestra (%):** {u_k0}")
-        st.write(f"**Incertidumbre eficiencia de la muestra (%):** {u_k0}")
+        st.write(f"**Incertidumbre eficiencia de la muestra (%):** {u_e}")
+        st.write(f"**Incertidumbre masa de la muestra (%):** {st.session_state["u_w"]}")
+        st.write(f"**Incertidumbre masa de la comparador (%):** {st.session_state["u_w_Au"]}")
+       
         st.session_state["u_k0"] = np.float64(u_k0)
         st.session_state["u_e"] = np.float64(u_e)
 
