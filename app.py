@@ -3,12 +3,16 @@ from librerias import *
 from ProcArch import *
 from calAAN import *
 from ProcFechas import *
-
+#https://github.com/JoseOliden/Calculo_AAN_v2/blob/main/LOGO_IPEN.jpg
 # Establecer configuración de página
 st.set_page_config(
     page_title="Sistema de Análisis k0 - AAN",
     page_icon="🔬",
     layout="wide"
+)
+st.image(
+    "https://github.com/JoseOliden/Calculo_AAN_v2/blob/main/LOGO_IPEN.jpg",
+    width=300,
 )
 
 # CSS personalizado
