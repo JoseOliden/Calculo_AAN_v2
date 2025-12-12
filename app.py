@@ -147,7 +147,7 @@ if page == "📁 Carga de Datos":
 elif page == "⚙️ Configuración":
     st.markdown('<h2 class="section-header">⚙️ Configuración del Análisis</h2>', unsafe_allow_html=True)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.subheader("⚖️ Parámetros de Masa")
@@ -166,7 +166,7 @@ elif page == "⚙️ Configuración":
         st.session_state["tolerancia"] = np.float64(tolerancia)    
     
     with col2:
-        st.subheader("🕐 Tiempos de Irradiación")
+        st.subheader("🕐 Tiempos de Irradiación de la muestra")
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
@@ -188,6 +188,30 @@ elif page == "⚙️ Configuración":
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
             hora_fin= st.text_input("Hora fin irradiación (HH:MM:SS):", value="09:45:00")
             st.session_state["hora_fin"] = hora_fin
+
+    with col3:
+        st.subheader("🕐 Tiempos de Irradiación del comparador")
+        col_fecha1, col_hora1 = st.columns(2)
+        with col_fecha1:
+            #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
+            fecha_ini_Au= st.text_input("Fecha inicio irradiación (MM/DD/AAAA):", value="09/26/2025")
+
+            st.session_state["fecha_ini_Au"] = fecha_ini_Au
+        with col_hora1:
+            #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
+            hora_ini_Au = st.text_input("Hora inicio irradiación (HH:MM:SS):", value="08:45:00")
+            st.session_state["hora_ini_Au"] = hora_ini_Au
+        
+        col_fecha2, col_hora2 = st.columns(2)
+        with col_fecha2:
+            #fecha_fin = st.date_input("Fecha fin irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
+            fecha_fin_Au = st.text_input("Fecha fin irradiación (MM/DD/AAAA):", value="09/26/2025")
+
+            st.session_state["fecha_fin_Au"] = fecha_fin_Au
+        with col_hora2:
+            #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
+            hora_fin_Au= st.text_input("Hora fin irradiación (HH:MM:SS):", value="09:45:00")
+            st.session_state["hora_fin_Au"] = hora_fin_Au
         
         st.subheader("📊 Parámetros de Incertidumbre")
         u_k0 = st.number_input("Incertidumbre k0 de la muestra (%):", min_value=0.0, max_value=10.0, value=2.8, step=0.1)
@@ -254,13 +278,14 @@ elif page == "📊 Procesamiento":
             df_filtrado_Nuclidos = Selecion_Nucleidos_muestra(st.session_state["df_resultado"],st.session_state["ref_files"], st.session_state["df_file"], st.session_state["tolerancia"])
 
             #Tiempos de irradiación y decaimiento de la muestra
-            # Irraciación: (fecha_fin, hora_fin) - (fecha_ini, hora_ini)
-            # Decaimiento: (fecha_ini, hora_ini) -  (fecha, hora) 
+            # Irraciación: (f_fin, h_fin) - (f_ini, h_ini)
+            # Decaimiento: (f_ini, h_ini) -  (f_med, h_med) 
 
             #Tiempos de irradiación y decaimiento del comparador Au 
             # Se el comparador fue irradiado en un tiempo diferente el cálculo
-            # Irraciación: (fecha_fin, hora_fin) - (fecha_ini, hora_ini)
-            # Decaimiento: (fecha_ini, hora_ini) -  (fecha_au, hora_au)
+            # Irraciación: (f_fin_Au, h_fin_Au) - (f_ini_Au, h_ini_Au)
+            # Decaimiento: (f_ini_Au, h_ini_Au) -  (f_med_c_Au, hora_med_c_Au)
+            
             f_ini = st.session_state["fecha_ini"]
             h_ini = st.session_state["hora_ini"]
             f_fin = st.session_state["fecha_fin"]
