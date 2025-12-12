@@ -150,7 +150,7 @@ elif page == "⚙️ Configuración":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.subheader("⚖️ Parámetros de Masa")
+        st.subheader("⚖️ Masas")
         masas, ince = st.columns(2)
         with masas:
             
@@ -166,7 +166,7 @@ elif page == "⚙️ Configuración":
             st.session_state["u_w_Au"] = np.float64(u_w_Au)
     
     with col2:
-        st.subheader("🕐 Tiempos de Irradiación de la muestra")
+        st.subheader("🕐 Irradiación de la muestra")
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
@@ -190,7 +190,7 @@ elif page == "⚙️ Configuración":
             st.session_state["hora_fin"] = hora_fin
 
     with col3:
-        st.subheader("🕐 Tiempos de Irradiación del comparador")
+        st.subheader("🕐 Irradiación del comparador")
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
