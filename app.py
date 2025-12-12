@@ -44,10 +44,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.image(
-    #"https://raw.githubusercontent.com/JoseOliden/Calculo_AAN_v2/blob/9200317f198286182976ba3fa03b7f521d1d7f64/LOGO_IPEN.jpg",
-    #"file:///C:\Users\joliden\Documents\Calidad\Interfaces_AAN\k0\LOGO_IPEN.jpg"
     "LOGO_IPEN.jpg",
-    width=300,
+    width=100,
 )
 # Título principal
 st.markdown('<h1 class="main-header">🔬 Sistema de Análisis k0 - AAN</h1>', unsafe_allow_html=True)
