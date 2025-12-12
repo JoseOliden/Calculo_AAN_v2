@@ -151,8 +151,9 @@ elif page == "⚙️ Configuración":
     
     with col1:
         masas, ince = st.columns(2)
+        st.subheader("⚖️ Parámetros de Masa")
         with masas:
-            st.subheader("⚖️ Parámetros de Masa")
+            
             masa_muestra = st.number_input("Masa de la muestra (g):", min_value=0.0, value=0.2817, step=0.0001, format="%.4f")
             st.session_state["masa_muestra"] = np.float64(masa_muestra)
             masa_comparador_au = st.number_input("Masa del comparador Au (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
