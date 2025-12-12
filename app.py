@@ -195,7 +195,6 @@ elif page == "⚙️ Configuración":
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
             fecha_ini_Au= st.text_input("Fecha inicio irradiación del comparador (MM/DD/AAAA):", value="09/26/2025")
-
             st.session_state["fecha_ini_Au"] = fecha_ini_Au
         with col_hora1:
             #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
@@ -308,9 +307,14 @@ elif page == "📊 Procesamiento":
             h_fin = st.session_state["hora_fin"]
             f_med = st.session_state["fecha"]
             hora_med = st.session_state["hora"]
+            f_ini_c_Au = st.session_state["fecha_ini_Au"]
+            h_ini_c_Au = st.session_state["hora_ini_Au"]
+            f_fin_c_Au = st.session_state["fecha_fin_Au"]
+            h_fin_c_Au = st.session_state["hora_fin_Au"]
             f_med_c_Au = st.session_state["fecha_au"] 
             hora_med_c_Au = st.session_state["hora_au"]
-            t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_med_c_Au, hora_med_c_Au)
+             
+            t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_ini_c_Au, h_ini_c_Au, f_fin_c_Au, h_fin_c_Au, f_med_c_Au, hora_med_c_Au)
             st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr}")
             st.write(f"**Tiempo decaimiento de la muestra (s):** {t_dec}")
             st.write(f"**Tiempo irradiación del comparador Au (s):** {t_irr_Au}")
