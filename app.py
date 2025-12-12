@@ -46,7 +46,10 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
+st.image(
+    "https://github.com/JoseOliden/Calculo_AAN_v2/blob/main/LOGO_IPEN.jpg",
+    width=300,
+)
 # Título principal
 st.markdown('<h1 class="main-header">🔬 Sistema de Análisis k0 - AAN</h1>', unsafe_allow_html=True)
 
