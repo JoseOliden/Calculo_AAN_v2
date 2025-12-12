@@ -341,7 +341,7 @@ elif page == "📊 Procesamiento":
                     df_muestra["Concentracion (PPM)"] = C*1000000
                     time.sleep(1.0)
             
-                 if (step == "Calculando incentidumbre..."):
+                if (step == "Calculando incentidumbre..."):
                     st.write("Calculando incentidumbre...")
 
                     # calculo de incertidumbre
