@@ -50,7 +50,7 @@ st.markdown('<h1 class="main-header">🔬 Sistema de Análisis k0 - AAN</h1>', u
 st.sidebar.title("🌐 Navegación")
 page = st.sidebar.radio(
     "Seleccionar sección:",
-    ["📁 Carga de Datos", "⚙️ Configuración", "📊 Procesamiento", "📈 Resultados", "📄 Reporte PDF"]
+    ["📁 Carga de Datos", "⚙️ Configuración", "📊 Procesamiento", "📈 Resultados", "📄 Reporte (EN DESARROLLO)"]
 )
 
 
@@ -464,9 +464,9 @@ elif page == "📈 Resultados":
         st.warning("⚠️ No hay resultados disponibles. Por favor, ejecute el procesamiento primero.")
 
 # ============================================
-# SECCIÓN 5: REPORTE PDF
+# SECCIÓN 5: REPORTE
 # ============================================
-elif page == "📄 Reporte PDF (EN DESARROLLO)":
+elif page == "📄 Reporte (EN DESARROLLO)":
     st.markdown('<h2 class="section-header">📄 Generación de Reporte</h2>', unsafe_allow_html=True)
     
     # Información del reporte
