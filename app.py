@@ -65,7 +65,7 @@ if page == "📁 Carga de Datos":
     st.markdown('<h2 class="section-header">📁 Carga de Archivos</h2>', unsafe_allow_html=True)
     
     # Crear columnas para la carga de archivos
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.subheader("📄 Archivo de la muestra")
@@ -76,27 +76,29 @@ if page == "📁 Carga de Datos":
                 df_resultado = procesar_RPT(rpt_file)
                 st.dataframe(df_resultado)
                 st.session_state["df_resultado"] = df_resultado
+
+        k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
+            if k0s_file:
+                st.success(f"✅ {k0s_file.name} cargado")
+                if k0s_file:
+                    fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
+                    st.session_state["fecha"] = fecha
+                    st.session_state["hora"] = hora
+                    st.session_state["t_vivo"] = np.float64(t_vivo)
+                    st.session_state["t_real"] = np.float64(t_real)
+                
+                    st.subheader("📌 Datos extraídos del archivo")
+                    st.write(f"**Fecha de medición:** {fecha}")
+                    st.write(f"**Hora de medición:** {hora}")
+                    st.write(f"**Tiempo vivo (s):** {t_vivo}")
+                    st.write(f"**Tiempo real (s):** {t_real}")
     
     with col2:
-        st.subheader(" ")
-        k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
-        if k0s_file:
-            st.success(f"✅ {k0s_file.name} cargado")
-            if k0s_file:
-                fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
-                st.session_state["fecha"] = fecha
-                st.session_state["hora"] = hora
-                st.session_state["t_vivo"] = np.float64(t_vivo)
-                st.session_state["t_real"] = np.float64(t_real)
-                
-                st.subheader("📌 Datos extraídos del archivo")
-                st.write(f"**Fecha de medición:** {fecha}")
-                st.write(f"**Hora de medición:** {hora}")
-                st.write(f"**Tiempo vivo (s):** {t_vivo}")
-                st.write(f"**Tiempo real (s):** {t_real}")
-                
+        st.subheader("Selecionar comparador")       
+        Tipo_comp = st.radio("Seleccionar el comparador:", ["Au", "Mn", "Na"])
+             
     with col3:
-        st.subheader("📄 Archivo .RPT de Au (Comparador)")
+        st.subheader("📄 Archivos del comparador")
         rpt_au_file = st.file_uploader("Subir archivo .RPT de Au", type=['RPT', 'RPT'], key="rpt_au")
         if rpt_au_file:
             st.success(f"✅ {rpt_au_file.name} cargado")
@@ -104,10 +106,7 @@ if page == "📁 Carga de Datos":
                 df_au_resultado = procesar_RPT(rpt_au_file)
                 st.session_state["df_au_resultado"] = df_au_resultado
                 st.dataframe(df_au_resultado)
-    
-    with col4:
-        st.subheader("📄 Archivo .k0s de Au (Comparador)")
-        k0s_au_file = st.file_uploader("Subir archivo .k0s de Au", type=['k0s', 'K0S'], key="k0s_au")
+            k0s_au_file = st.file_uploader("Subir archivo .k0s de Au", type=['k0s', 'K0S'], key="k0s_au")
         if k0s_au_file:
             st.success(f"✅ {k0s_au_file.name} cargado")
             fecha_au, hora_au, t_vivo_au, t_real_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
@@ -121,6 +120,7 @@ if page == "📁 Carga de Datos":
             st.write(f"**Hora de medición:** {hora_au}")
             st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
             st.write(f"**Tiempo real (s):** {t_real_au}")
+    
                 
     col21, col22 = st.columns(2)
 
