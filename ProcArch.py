@@ -122,13 +122,13 @@ def Selecion_Nucleidos_muestra(df_rpt_muestras,df_Nucleidos, df_database, tol=1.
 
 def Selecion_Nucleidos_Au(df_rpt_Au, df_database,tol,Tipo_comp):
     # buscar en database energía de Au
-    if (Tipo_comp == "Au")
+    if Tipo_comp == "Au":
         En_Au = np.float64(411.8)
         Nucledo_comp = "AU-198"
-    if (Tipo_comp == "Na")
+    if Tipo_comp == "Na":
         En_Au = np.float64(1368.6)
         Nucledo_comp = "NA-24" 
-    if (Tipo_comp == "Al")
+    if Tipo_comp == "Al":
         En_Au = np.float64(1778.99)
         Nucledo_comp = "AL-28" 
 
