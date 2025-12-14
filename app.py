@@ -95,7 +95,7 @@ if page == "📁 Carga de Datos":
     
     with col2:
         st.subheader("Selecionar comparador")       
-        Tipo_comp = st.radio("Seleccionar el comparador:", ["Au", "Mn", "Na"])
+        Tipo_comp = st.radio("Seleccionar el comparador:", ["Au", "Al", "Na"])
         st.session_state["Tipo_comp"] = Tipo_comp
     
     with col3:
@@ -162,7 +162,7 @@ elif page == "⚙️ Configuración":
             
             masa_muestra = st.number_input("Masa de la muestra (g):", min_value=0.0, value=0.2817, step=0.0001, format="%.6f")
             st.session_state["masa_muestra"] = np.float64(masa_muestra)
-            masa_comparador_au = st.number_input("Masa del comparador Au (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
+            masa_comparador_au = st.number_input("Masa del comparador (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
             st.session_state["masa_comparador_au"] = np.float64(masa_comparador_au)/1000000
 
         with ince:
