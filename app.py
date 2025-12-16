@@ -169,23 +169,23 @@ elif page == "⚙️ Configuración":
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
-            fecha_ini= st.text_input("Fecha inicio irradiación de la muestra(MM/DD/AAAA):", value="09/26/2025")
+            fecha_ini= st.text_input("Fecha inicio (muestra) (MM/DD/AAAA):", value="09/26/2025")
 
             st.session_state["fecha_ini"] = fecha_ini
         with col_hora1:
             #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            hora_ini = st.text_input("Hora inicio irradiación de la muestra(HH:MM:SS):", value="08:45:00")
+            hora_ini = st.text_input("Hora inicio (muestra) (HH:MM:SS):", value="08:45:00")
             st.session_state["hora_ini"] = hora_ini
         
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
             #fecha_fin = st.date_input("Fecha fin irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
-            fecha_fin= st.text_input("Fecha fin irradiación de la muestra (MM/DD/AAAA):", value="09/26/2025")
+            fecha_fin= st.text_input("Fecha fin (muestra) (MM/DD/AAAA):", value="09/26/2025")
 
             st.session_state["fecha_fin"] = fecha_fin
         with col_hora2:
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            hora_fin= st.text_input("Hora fin irradiación de la muestra (HH:MM:SS):", value="09:45:00")
+            hora_fin= st.text_input("Hora fin (muestra) (HH:MM:SS):", value="09:45:00")
             st.session_state["hora_fin"] = hora_fin
 
     with col3:
@@ -193,22 +193,22 @@ elif page == "⚙️ Configuración":
         col_fecha1, col_hora1 = st.columns(2)
         with col_fecha1:
             #fecha_ini = st.date_input("Fecha inicio irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
-            fecha_ini_Au= st.text_input("Fecha inicio irradiación del comparador (MM/DD/AAAA):", value="09/26/2025")
+            fecha_ini_Au= st.text_input("Fecha inicio (comparador) (MM/DD/AAAA):", value="09/26/2025")
             st.session_state["fecha_ini_Au"] = fecha_ini_Au
         with col_hora1:
             #hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            hora_ini_Au = st.text_input("Hora inicio irradiación del comparador (HH:MM:SS):", value="08:45:00")
+            hora_ini_Au = st.text_input("Hora inicio (comparador) (HH:MM:SS):", value="08:45:00")
             st.session_state["hora_ini_Au"] = hora_ini_Au
         
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
             #fecha_fin = st.date_input("Fecha fin irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
-            fecha_fin_Au = st.text_input("Fecha fin irradiación del comparador (MM/DD/AAAA):", value="09/26/2025")
+            fecha_fin_Au = st.text_input("Fecha fin (comparador) (MM/DD/AAAA):", value="09/26/2025")
 
             st.session_state["fecha_fin_Au"] = fecha_fin_Au
         with col_hora2:
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            hora_fin_Au= st.text_input("Hora fin irradiación del comparador (HH:MM:SS):", value="09:45:00")
+            hora_fin_Au= st.text_input("Hora fin (comparador) (HH:MM:SS):", value="09:45:00")
             st.session_state["hora_fin_Au"] = hora_fin_Au
 
     col1, col2, col3 = st.columns(3)
