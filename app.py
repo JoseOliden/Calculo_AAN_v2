@@ -277,6 +277,8 @@ elif page == "📊 Procesamiento":
                         st.session_state["df_comparadores_alfa_f"]
             
                     # Procesa comparador de Au y sus datos
+                    st.dataframe(df_Au)
+
                     df_Au = Selecion_Nucleidos_Au(st.session_state["df_au_resultado"], st.session_state["df_file"],st.session_state["tolerancia"])
                     # Hallar los nucleidos y sus datos
                     df_filtrado_Nuclidos = Selecion_Nucleidos_muestra(st.session_state["df_resultado"],st.session_state["ref_files"], st.session_state["df_file"], st.session_state["tolerancia"])
