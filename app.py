@@ -314,11 +314,13 @@ elif page == "📊 Procesamiento":
                     st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
 
                     # Cálculo de f y alfa
-                    #alfa, f = cal_alfa(st.session_state["df_comparadores_alfa_f"])
+                    alfa, f = cal_alfa(st.session_state["df_comparadores_alfa_f"])
                     ##
                     # ---------forzar valores -------
                     alfa = 0.226
                     f = 34
+                    st.session_state["alfa"] = alfa
+                    st.session_state["f"] = f
                     st.write(f"**alfa:** {alfa}")
                     st.write(f"**f:** {f}")
                     time.sleep(1.0)
@@ -340,7 +342,7 @@ elif page == "📊 Procesamiento":
                     tv_c_Au = st.session_state["t_vivo_au"]
                     tr_c_Au = st.session_state["t_real_au"]
                     geom = st.session_state["geometria"]
-                    C, Cn_corr_i = conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geom)
+                    C, Cn_corr_i = conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, st.session_state["alfa"], st.session_state["f"], geom)
                     df_muestra["Net Peak Area Corr"] = Cn_corr_i
                     df_muestra["Concentracion (PPM)"] = C*1000000
                     time.sleep(1.0)
