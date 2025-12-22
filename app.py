@@ -315,6 +315,7 @@ elif page == "📊 Procesamiento":
 
                     # Cálculo de f y alfa
                     #alfa, f = cal_alfa(st.session_state["df_comparadores_alfa_f"])
+                    ##
                     # ---------forzar valores -------
                     alfa = 0.226
                     f = 34
