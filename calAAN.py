@@ -81,7 +81,9 @@ def cal_alfa(df_comp):
     #
   
   f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
-  
+   # ---------forzar valores -------
+  alfa[0] = 0.226
+  f = 34
   return alfa[0], f
 # ---------------------------- Calculo de f --------------------------------#
 def cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c):
